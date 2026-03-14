@@ -10,6 +10,7 @@ RULES = [
     (r"hello|hi|hey", "Hey there! How can I help you?"),
     (r"how are you", "I'm just a bot, but I'm doing great!"),
     (r"bye|goodbye", "Goodbye! Have a great day!"),
+    (r"stop", "Okay, I will stop!")
     # TODO: Add your own rules here
     # (r"your pattern", "your response"),
 ]
