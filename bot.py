@@ -11,6 +11,7 @@ RULES = [
     (r"how are you", "I'm just a bot, but I'm doing great!"),
     (r"bye|goodbye", "Goodbye! Have a great day!"),
     (r"stop", "Okay, I will stop!")
+    (r"what's your name?", "My name is Romeo")
     # TODO: Add your own rules here
     # (r"your pattern", "your response"),
 ]
