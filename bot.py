@@ -12,6 +12,7 @@ RULES = [
     (r"bye|goodbye", "Goodbye! Have a great day!"),
     (r"stop", "Okay, I will stop!")
     (r"what's your name?", "My name is Romeo")
+    (r"wait", "Okay")
     # TODO: Add your own rules here
     # (r"your pattern", "your response"),
 ]
