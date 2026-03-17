@@ -3,7 +3,7 @@ import re
 # -------------------------------------------------------
 # RULES
 # Each rule is a tuple of (pattern, response)
-# Pattern is a regex string, response is what the bot says
+# Pattern is a regex string response is what the bot says
 # TODO: Add more rules as you build out the bot
 # -------------------------------------------------------
 RULES = [
