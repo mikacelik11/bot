@@ -13,7 +13,7 @@ RULES = [
     (r"stop", "Okay, I will stop!")
     (r"what's your name?", "My name is Romeo")
     (r"wait", "Okay")
-    # TODO: Add your own rules here
+    # TODO: Add more own rules
     # (r"your pattern", "your response"),
 ]
 
