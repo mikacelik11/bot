@@ -1,4 +1,5 @@
 import re
+import random
 
 # -------------------------------------------------------
 # RULES
@@ -6,12 +7,20 @@ import re
 # Pattern is a regex string response is what the bot says
 # TODO: Add more rules as you build out the bot
 # -------------------------------------------------------
+
+JOKES = [
+    "Why don't scientists trust atoms? Because they make up everything!",
+    "Why did the scarecrow win an award? He was outstanding in his field!",
+]
+
+(r"tell me a joke|joke", random.choice(JOKES))
+
 RULES = [
     (r"hello|hi|hey", "Hey there! How can I help you?"),
     (r"how are you", "I'm just a bot, but I'm doing great!"),
     (r"bye|goodbye", "Goodbye! Have a great day!"),
-    (r"stop", "Okay, I will stop!")
-    (r"what's your name?", "My name is Romeo")
+    (r"stop", "Okay, I will stop!"),
+    (r"what's your name", "My name is Romeo"),
     (r"wait", "Okay")
     # TODO: Add more own rules
     # (r"your pattern", "your response"),
@@ -27,6 +36,9 @@ def get_response(user_input: str) -> str:
     Falls back to FALLBACK if no rule matches.
     """
     user_input = user_input.lower().strip()
+    
+    if re.search(r"joke", user_input):
+        return random.choice(JOKES)
 
     for pattern, response in RULES:
         if re.search(pattern, user_input):
