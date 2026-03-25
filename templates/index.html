@@ -3,25 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mika's Chatbot</title>
+  <title>Romeo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
 
+  <div id="scanlines"></div>
+
   <div id="chat-container">
     <div id="chat-header">
-      <h2>Mika's Chatbot</h2>
-      <!-- TODO: Add a subtitle or bot name here -->
+      <div id="header-dots">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <div id="header-title">
+        <span id="cursor-blink">█</span> ROMEO.exe
+      </div>
+      <div id="header-status">● ONLINE</div>
     </div>
 
     <div id="chat-window">
-      <!-- Messages will appear here dynamically -->
-      <!-- TODO: Optionally add a welcome message on load -->
+      <div class="message bot">
+        <span class="bot-label">ROMEO &gt;</span> Yo! I'm Romeo. Ask me anything ✦
+      </div>
     </div>
 
     <div id="input-area">
-      <input type="text" id="user-input" placeholder="Type a message..." autocomplete="off" />
-      <button id="send-btn">Send</button>
+      <span id="prompt">&gt;_</span>
+      <input type="text" id="user-input" placeholder="type your message..." autocomplete="off" spellcheck="false"/>
+      <button id="send-btn">SEND</button>
     </div>
   </div>
 
@@ -30,16 +42,37 @@
     const userInput = document.getElementById("user-input");
     const sendBtn = document.getElementById("send-btn");
 
-    // Adds a message bubble to the chat window
     function appendMessage(text, sender) {
       const msg = document.createElement("div");
-      msg.classList.add("message", sender); // sender = "user" or "bot"
-      msg.textContent = text;
-      chatWindow.appendChild(msg);
-      chatWindow.scrollTop = chatWindow.scrollHeight; // auto-scroll
+      msg.classList.add("message", sender);
+
+      if (sender === "bot") {
+        const label = document.createElement("span");
+        label.classList.add("bot-label");
+        label.textContent = "ROMEO > ";
+        msg.appendChild(label);
+        const content = document.createElement("span");
+        msg.appendChild(content);
+        chatWindow.appendChild(msg);
+        let i = 0;
+        const interval = setInterval(() => {
+          content.textContent += text[i];
+          i++;
+          chatWindow.scrollTop = chatWindow.scrollHeight;
+          if (i >= text.length) clearInterval(interval);
+        }, 18);
+      } else {
+        const label = document.createElement("span");
+        label.classList.add("user-label");
+        label.textContent = "YOU > ";
+        msg.appendChild(label);
+        msg.appendChild(document.createTextNode(text));
+        chatWindow.appendChild(msg);
+      }
+
+      chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 
-    // Sends the message to Flask and displays the response
     async function sendMessage() {
       const text = userInput.value.trim();
       if (!text) return;
@@ -47,24 +80,28 @@
       appendMessage(text, "user");
       userInput.value = "";
 
-      // TODO: Add a loading indicator while waiting for response
+      const loading = document.createElement("div");
+      loading.classList.add("message", "bot", "loading");
+      loading.innerHTML = '<span class="bot-label">ROMEO &gt;</span> <span class="dots">...</span>';
+      chatWindow.appendChild(loading);
+      chatWindow.scrollTop = chatWindow.scrollHeight;
 
-      const response = await fetch("/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text }),
-      });
-
-      const data = await response.json();
-      appendMessage(data.reply, "bot");
-
-      // TODO: Handle fetch errors gracefully
+      try {
+        const response = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text }),
+        });
+        const data = await response.json();
+        chatWindow.removeChild(loading);
+        appendMessage(data.reply, "bot");
+      } catch (err) {
+        chatWindow.removeChild(loading);
+        appendMessage("Whoa, something broke. Try again!", "bot");
+      }
     }
 
-    // Send on click
     sendBtn.addEventListener("click", sendMessage);
-
-    // Send on Enter key
     userInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") sendMessage();
     });
