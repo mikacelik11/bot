@@ -1,5 +1,6 @@
 import re
 import random
+import math
 
 # -------------------------------------------------------
 # RULES
@@ -57,23 +58,40 @@ RULES = [
 
 FALLBACK = "Sorry, I didn't understand that. Can you rephrase?"
 
+def handle_math(user_input):
+    """Tries to evaluate a math expression from the user's input."""
+    # Strip out common phrases to isolate the expression
+    expression = re.sub(r"what is|what's|calculate|solve|evaluate", "", user_input, flags=re.IGNORECASE)
+    expression = expression.strip().rstrip("?")
 
-def get_response(user_input: str) -> str:
-    """
-    Takes a user message and returns a bot response.
-    Loops through RULES and returns the first match.
-    Falls back to FALLBACK if no rule matches.
-    """
-    user_input = user_input.lower().strip()
-    
-    if re.search(r"joke", user_input):
+    try:
+        # Only allow safe math characters
+        if re.match(r"^[\d\s\+\-\*\/\.\(\)\%\^]+$", expression):
+            result = eval(expression)
+            return f"That's {result}!"
+        else:
+            return None  # Not a math expression
+    except:
+        return None
+
+
+def get_response(user_input):
+    user_input_clean = user_input.lower().strip()
+
+    # Check for jokes
+    if re.search(r"joke", user_input_clean):
         return random.choice(JOKES)
 
+    # Check for math
+    math_result = handle_math(user_input_clean)
+    if math_result:
+        return math_result
+
+    # Check rules
     for pattern, response in RULES:
-        if re.search(pattern, user_input):
+        if re.search(pattern, user_input_clean):
             return response
 
-    # TODO: Optionally add context-aware logic here later
     return FALLBACK
 
 
