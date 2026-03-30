@@ -9,6 +9,17 @@ import math
 # TODO: Add more rules as you build out the bot
 # -------------------------------------------------------
 
+FACTS = [
+    "Honey never spoils. Archaeologists found 3000-year-old honey in Egyptian tombs!",
+    "A group of flamingos is called a flamboyance.",
+    "Bananas are technically berries, but strawberries aren't.",
+    "Octopuses have three hearts and blue blood.",
+    "The Eiffel Tower grows about 6 inches taller in summer due to heat expansion.",
+    "A day on Venus is longer than a year on Venus.",
+    "Cleopatra lived closer in time to the Moon landing than to the building of the pyramids.",
+]
+
+
 JOKES = [
     "Why don't scientists trust atoms? Because they make up everything!",
     "Why did the scarecrow win an award? He was outstanding in his field!",
@@ -77,6 +88,10 @@ def handle_math(user_input):
 
 def get_response(user_input):
     user_input_clean = user_input.lower().strip()
+    
+    # Check for facts
+    if re.search(r"fun fact|fact|did you know", user_input_clean):
+        return random.choice(FACTS)
 
     # Check for jokes
     if re.search(r"joke", user_input_clean):
