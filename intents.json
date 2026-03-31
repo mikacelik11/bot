@@ -1,0 +1,85 @@
+{
+    "intents": [
+      {
+        "tag": "greeting",
+        "examples": [
+          "hello", "hi", "hey", "howdy", "what's up", "sup", "good day", "hiya"
+        ]
+      },
+      {
+        "tag": "goodbye",
+        "examples": [
+          "bye", "goodbye", "see you", "later", "cya", "see you later", "take care", "peace"
+        ]
+      },
+      {
+        "tag": "identity",
+        "examples": [
+          "what's your name", "who are you", "what are you", "tell me about yourself",
+          "are you a bot", "are you a robot", "are you human", "who built you", "who made you"
+        ]
+      },
+      {
+        "tag": "feelings",
+        "examples": [
+          "how are you", "you doing okay", "how do you feel", "are you good",
+          "are you happy", "are you sad", "you alright"
+        ]
+      },
+      {
+        "tag": "joke",
+        "examples": [
+          "tell me a joke", "say something funny", "make me laugh",
+          "got any jokes", "joke", "funny"
+        ]
+      },
+      {
+        "tag": "math",
+        "examples": [
+          "what is 2 plus 2", "calculate 10 times 5", "solve 100 divided by 4",
+          "what is 5 plus 3", "what is 12 times 12", "evaluate 50 minus 20"
+        ]
+      },
+      {
+        "tag": "help",
+        "examples": [
+          "help", "what can you do", "how do you work", "what do you know",
+          "assist me", "i need help", "can you help me"
+        ]
+      },
+      {
+        "tag": "thanks",
+        "examples": [
+          "thank you", "thanks", "thx", "appreciate it", "cheers", "thanks a lot"
+        ]
+      },
+      {
+        "tag": "fun_fact",
+        "examples": [
+          "tell me a fun fact", "give me a fact", "did you know", "something interesting",
+          "teach me something", "fun fact"
+        ]
+      },
+      {
+        "tag": "compliment",
+        "examples": [
+          "you're awesome", "you are great", "you're cool", "good job", "well done",
+          "i love you", "you're the best", "nice one"
+        ]
+      },
+      {
+        "tag": "insult",
+        "examples": [
+          "you're bad", "you suck", "you're terrible", "you're useless",
+          "you're dumb", "you're stupid", "you're trash"
+        ]
+      },
+      {
+        "tag": "fallback",
+        "examples": [
+          "blah blah blah", "asdfghjkl", "random stuff", "gibberish",
+          "i don't know what to say", "hmm"
+        ]
+      }
+    ]
+  }
