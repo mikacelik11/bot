@@ -23,7 +23,7 @@ def chat():
     """
     data = request.get_json()
 
-    # TODO: Add input validation (what if message is empty?)
+    # TODO: Add input validation ,what if message is empty?
     user_message = data.get("message", "")
 
     bot_reply = get_response(user_message)
