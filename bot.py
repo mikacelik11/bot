@@ -102,7 +102,7 @@ def get_response(user_input):
     if math_result:
         return math_result
 
-    # Check rules
+    # Check for rules
     for pattern, response in RULES:
         if re.search(pattern, user_input_clean):
             return response
