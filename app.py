@@ -11,7 +11,6 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     """Serves the main chat page."""
-    # TODO: Make sure templates/index.html exists
     return render_template("index.html")
 
 
