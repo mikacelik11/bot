@@ -4,7 +4,7 @@ import math
 
 # -------------------------------------------------------
 # RULES
-# Each rule is a tuple of (pattern, response)
+# Each rule is made of a tuple (pattern, response)
 # Pattern is a regex string response is what the bot says
 # TODO: Add more rules as you build out the bot
 # -------------------------------------------------------
