@@ -76,7 +76,7 @@ def handle_math(user_input):
     expression = expression.strip().rstrip("?")
 
     try:
-        # Only allow safe math characters
+        # Only allow proper math characters
         if re.match(r"^[\d\s\+\-\*\/\.\(\)\%\^]+$", expression):
             result = eval(expression)
             return f"That's {result}!"
