@@ -89,7 +89,7 @@ def handle_math(user_input):
 def get_response(user_input):
     user_input_clean = user_input.lower().strip()
     
-    # Check for facts
+    # Check for fact
     if re.search(r"fun fact|fact|did you know", user_input_clean):
         return random.choice(FACTS)
 
