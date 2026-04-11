@@ -110,7 +110,7 @@ def get_response(user_input):
     return FALLBACK
 
 
-# Quick test — run `python bot.py` to verify your rules work
+# Quick test — run `python3 bot.py` to verify your rules work
 if __name__ == "__main__":
     print("Bot test mode. Type 'quit' to exit.\n")
     while True:
