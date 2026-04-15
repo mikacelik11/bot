@@ -31,7 +31,7 @@ def chat():
 
 
 # -------------------------------------------------------
-# run
+# run main
 # -------------------------------------------------------
 if __name__ == "__main__":
     # debug=True auto-reloads when you save changes
