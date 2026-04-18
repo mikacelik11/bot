@@ -13,7 +13,7 @@ def index():
     """Serves the main chat page."""
     return render_template("index.html")
 
-#test
+#test its time
 @app.route("/chat", methods=["POST"])
 def chat():
     """
