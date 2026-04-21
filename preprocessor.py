@@ -2,7 +2,7 @@ import json
 import nltk
 import string
 
-# download nltk data (only needed once)
+# download nltk data
 nltk.download("punkt")
 nltk.download("stopwords")
 nltk.download("punkt_tab")
