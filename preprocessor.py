@@ -24,7 +24,7 @@ def preprocess(text):
     4. remove stopwords
     5. stem each word
     """
-    # make it lowercase
+    # lowercase
     text = text.lower()
 
     # remove punctuation
