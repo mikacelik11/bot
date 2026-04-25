@@ -27,7 +27,7 @@ def preprocess(text):
     # lowercase
     text = text.lower()
 
-    # remove punctuation
+    # removes the punctuation
     text = text.translate(str.maketrans("", "", string.punctuation))
 
     # tokenize
