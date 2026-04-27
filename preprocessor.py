@@ -57,7 +57,7 @@ def load_training_data(path="intents.json"):
     return X, y
 
 
-# test
+# test do 
 if __name__ == "__main__":
     print(preprocess("What is your name?"))
     print(preprocess("Tell me a funny joke!"))
