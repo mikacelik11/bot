@@ -3,6 +3,7 @@ from bot import get_response
 
 app = Flask(__name__)
 
+# put on hold
 
 # -------------------------------------------------------
 # ROUTES
